@@ -1,0 +1,1 @@
+# univerzita-kona-api
