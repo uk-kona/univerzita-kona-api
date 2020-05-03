@@ -8,6 +8,8 @@ license = "GPL-3.0-or-later"
 [tool.poetry.dependencies]
 python = "^3.6"
 flask = "^1.1.2"
+flask-sqlalchemy = "^2.4.1"
+flask-migrate = "^2.5.3"
 
 [tool.poetry.dev-dependencies]
 
