@@ -16,7 +16,7 @@ poetry install
 poetry shell
 
 export FLASK_APP=app
-export FLASK_ENV=develpoment
+export FLASK_ENV=development
 
 # run dev server
 flask run
@@ -28,5 +28,5 @@ flask db init
 flask db migrate
 
 # apply migrations
-flask db update
+flask db upgrate
 ```
