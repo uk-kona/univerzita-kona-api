@@ -1,21 +1,19 @@
 from app import db
-from flask import jsonify
-from flask import request
+from flask import jsonify, request
 from .models import Payment
 from flask.views import MethodView
+from http import HTTPStatus
 
 
 class PaymentResource(MethodView):
     def post(self):
         content = request.json
+        if content is None:
+            return jsonify(error='No JSON provided when calling PAYMENT/POST API'), HTTPStatus.BAD_REQUEST
         if 'note' not in content:
-            raise KeyError
-        highest_id = db.session.query(db.func.max(Payment.id)).scalar()
-        if highest_id is None:
-            highest_id = 0
-        leading_zeros = ('0' * (10 - len(str(highest_id + 1))))
-        new_variable_symbol = leading_zeros + str(highest_id + 1)
-        p = Payment(variable_symbol=new_variable_symbol, note=content['note'])
+            return jsonify(error='Wrong JSON provided when calling PAYMENT/POST API, note not provided'), \
+                   HTTPStatus.BAD_REQUEST
+        p = Payment(note=content['note'])
         db.session.add(p)
         db.session.commit()
-        return jsonify({"variable_symbol": new_variable_symbol})
+        return jsonify({"variable_symbol": p.variable_symbol})
