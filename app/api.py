@@ -8,3 +8,13 @@ class PaymentResource(MethodView):
 
     def post(self):
         pass
+
+
+class WantToHelpResource(MethodView):
+    def post(self):
+        return jsonify(ok=True)
+
+
+class NeedHelpResource(MethodView):
+    def post(self):
+        return jsonify(ok=True)
