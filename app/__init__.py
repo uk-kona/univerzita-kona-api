@@ -14,7 +14,7 @@ api.add_url_rule('/need-help', view_func=NeedHelpResource.as_view('need-help'))
 app = Flask(__name__)
 CORS(app)
 app.config.from_object(Config)
-app.register_blueprint(api, url_prefix='/api')
+app.register_blueprint(api, url_prefix='/api/v1')
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
