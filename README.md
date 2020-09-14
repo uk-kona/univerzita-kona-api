@@ -28,5 +28,5 @@ flask db init
 flask db migrate
 
 # apply migrations
-flask db upgrate
+flask db upgrade
 ```
