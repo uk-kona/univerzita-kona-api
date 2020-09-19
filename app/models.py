@@ -151,3 +151,28 @@ class SkillUser(db.Model):
 
     def __repr__(self):
         return f'<SkillUser: [id: {self.id}, skill id: {self.skill_id}, user id: {self.user_id}>'
+
+
+class Activity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=True, nullable=False)
+    description = db.Column(db.String(256))
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_by = db.Column(db.Integer, db.ForeignKey('user.id'))
+    deleted_at = db.Column(db.DateTime)
+
+    def __repr__(self):
+        return f'<Activity: [id: {self.id}, name: {self.name}, description: {self.description}>'
+
+
+class SkillActivity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    skill_id = db.Column(db.Integer, db.ForeignKey('skill.id'), nullable=False)
+    activity_id = db.Column(db.Integer, db.ForeignKey('activity.id'), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f'<SkillActivity: [id: {self.id}, skill id: {self.skill_id}, activity id: {self.activity_id}>'
