@@ -317,6 +317,13 @@ def upgrade():
                 'value': "Fakulta sociálnych a ekonomických vied (FSEV UK)",
                 'created_at': datetime.utcnow(),
                 'created_by': 1
+            },
+            {
+                'id': 13,
+                'attribute_id': 1,
+                'value': "Filozofická fakulta (FIF UK)",
+                'created_at': datetime.utcnow(),
+                'created_by': 1
             }
         ]
     )
