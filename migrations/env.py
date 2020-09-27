@@ -33,7 +33,7 @@ target_metadata = current_app.extensions['migrate'].db.metadata
 # ... etc.
 
 from app.models import User, PostalCode, UserPostalCode, AttributeType, Attribute, AttributeValueList
-from app.models import UserAttributeValue,  Group, UserGroup, Skill, SkillUser
+from app.models import UserAttributeValue,  Group, UserGroup, Skill, SkillUser, Activity, SkillActivity
 
 
 def run_migrations_offline():
