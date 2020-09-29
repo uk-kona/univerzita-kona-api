@@ -160,7 +160,7 @@ class SkillUser(db.Model):
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f'<SkillUser: [id: {self.id}, skill id: {self.skill_id}, user id: {self.user_id}>'
+        return f'<SkillUser: [id: {self.id}, skill id: {self.skill_id}, user id: {self.user_id}]>'
 
 
 @dataclass
@@ -179,7 +179,7 @@ class Activity(db.Model):
     deleted_at = db.Column(db.DateTime)
 
     def __repr__(self):
-        return f'<Activity: [id: {self.id}, name: {self.name}, description: {self.description}>'
+        return f'<Activity: [id: {self.id}, name: {self.name}, description: {self.description}]>'
 
 
 class SkillActivity(db.Model):
@@ -190,4 +190,4 @@ class SkillActivity(db.Model):
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f'<SkillActivity: [id: {self.id}, skill id: {self.skill_id}, activity id: {self.activity_id}>'
+        return f'<SkillActivity: [id: {self.id}, skill id: {self.skill_id}, activity id: {self.activity_id}]>'
