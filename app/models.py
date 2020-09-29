@@ -1,4 +1,5 @@
 from app import db
+from dataclasses import dataclass
 from datetime import datetime
 
 
@@ -72,7 +73,12 @@ class Attribute(db.Model):
         return f'<Attribute: [id: {self.id}, name: {self.name}, type id: {self.type_id}]>'
 
 
+@dataclass
 class AttributeValueList(db.Model):
+    id: int
+    attribute_id: int
+    value: str
+
     id = db.Column(db.Integer, primary_key=True)
     attribute_id = db.Column(db.Integer, db.ForeignKey('attribute.id'), nullable=False)
     value = db.Column(db.String(50), nullable=False)
@@ -127,7 +133,11 @@ class UserGroup(db.Model):
         return f'<UserGroup: [id: {self.id}, user id: {self.user_id}, group id: {self.group_id}]>'
 
 
+@dataclass
 class Skill(db.Model):
+    id: int
+    name: str
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     visible = db.Column(db.Boolean)
@@ -150,10 +160,15 @@ class SkillUser(db.Model):
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f'<SkillUser: [id: {self.id}, skill id: {self.skill_id}, user id: {self.user_id}>'
+        return f'<SkillUser: [id: {self.id}, skill id: {self.skill_id}, user id: {self.user_id}]>'
 
 
+@dataclass
 class Activity(db.Model):
+    id: int
+    name: str
+    description: str
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     description = db.Column(db.String(256))
@@ -164,7 +179,7 @@ class Activity(db.Model):
     deleted_at = db.Column(db.DateTime)
 
     def __repr__(self):
-        return f'<Activity: [id: {self.id}, name: {self.name}, description: {self.description}>'
+        return f'<Activity: [id: {self.id}, name: {self.name}, description: {self.description}]>'
 
 
 class SkillActivity(db.Model):
@@ -175,4 +190,4 @@ class SkillActivity(db.Model):
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f'<SkillActivity: [id: {self.id}, skill id: {self.skill_id}, activity id: {self.activity_id}>'
+        return f'<SkillActivity: [id: {self.id}, skill id: {self.skill_id}, activity id: {self.activity_id}]>'
