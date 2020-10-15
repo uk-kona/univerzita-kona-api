@@ -5,7 +5,7 @@ from flask.views import MethodView
 from .models import Activity, Attribute, AttributeValueList, Skill
 
 
-class PaymentResource(MethodView):
+class HelpFinanciallyResource(MethodView):
     def get(self):
         return jsonify(ok=True)
 
@@ -13,7 +13,7 @@ class PaymentResource(MethodView):
         pass
 
 
-class WantToHelpResource(MethodView):
+class HelpWithActivityResource(MethodView):
     def post(self):
         return jsonify(ok=True)
 
